@@ -4,7 +4,11 @@ import ToDoInput from "../components/ToDoInput";
 import ToDoList from "../components/ToDoList";
 import Filter from "../components/Filter";
 
+import { useToDo } from "../contexts/context";
+
 const ToDo = () => {
+  
+
   return (
     <Container maxWidth="sm">
       <Box mt={3} p={4}>
