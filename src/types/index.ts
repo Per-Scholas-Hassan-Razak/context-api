@@ -14,3 +14,10 @@ export interface ToDoContextProps {
   editingItem:ToDo | null;
   startEditing:(item:ToDo) => void
 }
+
+export type FilterType = "all" | "active" | "completed";
+
+export interface FilterContextProps{
+    filter: FilterType
+    setFilter:(filter: "all" | "active" | "completed") => void
+}
