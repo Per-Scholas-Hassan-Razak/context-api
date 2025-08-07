@@ -1,8 +1,9 @@
-import { Container, Divider, Paper, Typography } from "@mui/material";
+import { Container, Paper, Typography } from "@mui/material";
 import ToDoInput from "../components/ToDoInput";
 
 import ToDoList from "../components/ToDoList";
 import Filter from "../components/Filter";
+import FilterProvider from "../providers/FilterProvider";
 
 const ToDo = () => {
   return (
@@ -16,25 +17,29 @@ const ToDo = () => {
         alignItems: "center",
       }}
     >
-      <Paper elevation={23}
-      sx={{
-        padding: 4,
-        borderRadius: 2,
-        width: "100%",
-        maxWidth: "500px",
-        display: "flex",
-        flexDirection: "column",
-        gap: 5,
-        justifyContent: "flex-start",
-        alignItems: "center",
-        height: "700px",
-      }}>
+      <Paper
+        elevation={23}
+        sx={{
+          padding: 4,
+          borderRadius: 2,
+          width: "100%",
+          maxWidth: "500px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 5,
+          justifyContent: "flex-start",
+          alignItems: "center",
+          height: "700px",
+        }}
+      >
         <Typography variant="h4" align="center">
           To Do Management Application
         </Typography>
         <ToDoInput />
-        <Filter />
-        <ToDoList />
+        <FilterProvider>
+          <Filter />
+          <ToDoList />
+        </FilterProvider>
       </Paper>
     </Container>
   );

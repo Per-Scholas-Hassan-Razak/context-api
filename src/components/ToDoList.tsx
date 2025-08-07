@@ -1,10 +1,20 @@
 import { Box,  IconButton, List, ListItem, Tooltip, Typography } from "@mui/material";
-import { useToDo } from "../contexts/context";
+import { useFilter, useToDo } from "../contexts/context";
 import ToDoItem from "./ToDoItem";
 import CleaningServicesIcon from "@mui/icons-material/CleaningServices";
 
 const ToDoList = () => {
   const { toDoList, clearCompleted } = useToDo();
+  const {filter} = useFilter();
+
+  const filteredToDoItems = toDoList.filter((item) => {
+    if(filter === 'completed') return item.completed
+    if(filter === 'active') return !item.completed
+    return true
+  } 
+  )
+
+
 
   return (
     <>
@@ -39,7 +49,7 @@ const ToDoList = () => {
       >
    
         <List>
-          {toDoList.map((item) => (
+          {filteredToDoItems.map((item) => (
             <ListItem key={item.id}>
               <ToDoItem {...item} />
             </ListItem>
