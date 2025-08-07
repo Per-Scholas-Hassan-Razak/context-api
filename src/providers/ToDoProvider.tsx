@@ -22,7 +22,13 @@ const ToDoProvider = ({ children }: { children: ReactNode }) => {
     setToDoList((prevToDoList) => [newItem, ...prevToDoList])
 
   };
-  const toggleToDo = () => {};
+  const toggleToDo = (id: string | number) => {
+    setToDoList((prevToDo) =>
+      prevToDo.map((item) =>
+        item.id === id ? { ...item, completed: !item.completed } : item
+      )
+    );
+  };
   const deleteToDo = () => {};
   const editToDO = () => {};
   const clearCompleted = () => {};
