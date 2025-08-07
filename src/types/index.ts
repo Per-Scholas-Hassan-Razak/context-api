@@ -9,6 +9,8 @@ export interface ToDoContextProps {
   addToDo: (text:string) => void;
   toggleToDo: (id: string | number) => void;
   deleteToDo: (id: string | number) => void;
-  editToDO: (id: string | number) => void;
+  editToDo: (id: string | number,newText: string) => void;
   clearCompleted: () => void;
+  editingItem:ToDo | null;
+  startEditing:(item:ToDo) => void
 }

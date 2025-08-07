@@ -1,16 +1,35 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useToDo } from "../contexts/context";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ToDoInput = () => {
-  const [task, setTask] = useState("")
+  const [taskText, setTaskText] = useState("");
 
-  const { addToDo } = useToDo();
+  const { addToDo, editingItem, editToDo } = useToDo();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addToDo(task)
+
+    if (!taskText.trim()) return;
+
+    if (editingItem) {
+      editToDo(editingItem.id, taskText);
+    } else {
+      addToDo(taskText);
+    }
+    setTaskText("");
   };
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    if (editingItem) {
+      setTaskText(editingItem.text);
+      inputRef.current?.focus();
+    } else {
+      setTaskText("");
+    }
+  }, [editingItem]);
 
   return (
     <Box
@@ -18,8 +37,8 @@ const ToDoInput = () => {
         width: "100%",
         display: "flex",
         gap: 2,
-        justifyContent:'center',
-        flexWrap:'wrap'
+        justifyContent: "center",
+        flexWrap: "wrap",
       }}
       component="form"
       onSubmit={handleSubmit}
@@ -30,10 +49,12 @@ const ToDoInput = () => {
         label="Add A Task"
         variant="outlined"
         sx={{ marginTop: "10px" }}
-        onChange={(e) => setTask(e.target.value)}
+        onChange={(e) => setTaskText(e.target.value)}
+        inputRef={inputRef}
+        value={taskText}
       />
       <Button type="submit" color="primary" variant="contained">
-        Add To Do
+        {editingItem ? "Update Task" : "Add To Do"}
       </Button>
     </Box>
   );
