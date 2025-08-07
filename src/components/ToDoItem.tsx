@@ -4,7 +4,7 @@ import { useToDo } from "../contexts/context";
 
 const ToDoItem = ({id, text, completed}:ToDo) => {
 
-const {toggleToDo} = useToDo();
+const {toggleToDo, deleteToDo} = useToDo();
 
     return (
       <>
@@ -26,7 +26,9 @@ const {toggleToDo} = useToDo();
           <Button variant="contained">Edit</Button>
         </IconButton>
         <IconButton edge="end" aria-label="delete">
-          <Button variant="contained">Delete</Button>
+          <Button 
+          onClick = {() => deleteToDo(id)}
+          variant="contained">Delete</Button>
         </IconButton>
       </ListItemSecondaryAction>
     </>

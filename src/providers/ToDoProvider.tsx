@@ -29,7 +29,12 @@ const ToDoProvider = ({ children }: { children: ReactNode }) => {
       )
     );
   };
-  const deleteToDo = () => {};
+  const deleteToDo = (id: string | number) => {
+    setToDoList((prevToDo) => (
+       prevToDo.filter((item) => item.id !== id) 
+    ))
+  };
+  
   const editToDO = () => {};
   const clearCompleted = () => {};
 
