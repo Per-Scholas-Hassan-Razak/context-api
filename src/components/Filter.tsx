@@ -11,9 +11,10 @@ const Filter = () => {
           justifyContent: "center",
         }}
       >
-        <Button variant="contained">All</Button>
-        <Button variant="contained">Active</Button>
-        <Button variant="contained">Completed</Button>
+        <Button variant="outlined">All</Button>
+        <Button variant="outlined">Active</Button>
+        <Button variant="outlined">Completed</Button>
+        
       </Box>
     </>
   );

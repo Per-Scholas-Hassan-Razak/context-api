@@ -15,9 +15,11 @@ const ToDoInput = () => {
   return (
     <Box
       sx={{
-        width: "600px",
+        width: "100%",
         display: "flex",
-        gap: 3,
+        gap: 2,
+        justifyContent:'center',
+        flexWrap:'wrap'
       }}
       component="form"
       onSubmit={handleSubmit}
