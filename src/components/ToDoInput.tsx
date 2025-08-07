@@ -1,8 +1,9 @@
 import { Box, Button, TextField } from "@mui/material";
-import { useToDo } from "../contexts/context";
+import { useTheme, useToDo } from "../contexts/context";
 import { useEffect, useRef, useState } from "react";
 
 const ToDoInput = () => {
+  const {theme} = useTheme()
   const [taskText, setTaskText] = useState("");
 
   const { addToDo, editingItem, editToDo } = useToDo();
@@ -48,7 +49,12 @@ const ToDoInput = () => {
         id="outlined-basic"
         label="Add A Task"
         variant="outlined"
-        sx={{ marginTop: "10px" }}
+        sx={{
+        input: {
+          backgroundColor: theme === "dark" ? "#cac6c6ff" : "#ffffff",
+          color: theme === "dark" ? "#000000" : "#000000",
+        }
+      }}
         onChange={(e) => setTaskText(e.target.value)}
         inputRef={inputRef}
         value={taskText}

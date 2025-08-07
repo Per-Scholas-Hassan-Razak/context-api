@@ -1,3 +1,15 @@
-/* html, body {
-  background-color: #353232ff;
-} */
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  background-color: #484747ff;
+  color: #ffffff;
+}
+
+body.light {
+  background-color: #b9b4b4ff;
+  color: #000000;
+}

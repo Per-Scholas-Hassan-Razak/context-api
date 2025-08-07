@@ -21,3 +21,10 @@ export interface FilterContextProps{
     filter: FilterType
     setFilter:(filter: "all" | "active" | "completed") => void
 }
+
+export type ThemeType = "light" | "dark"
+export interface ThemeContextProps{
+  theme:ThemeType;
+  toggleTheme:() => void
+  // themeState:boolean
+}
