@@ -48,7 +48,11 @@ const ToDoProvider = ({ children }: { children: ReactNode }) => {
     setEditingItem(item);
   };
 
-  const clearCompleted = () => {};
+  const clearCompleted = () => {
+    setToDoList((prevToDo) => 
+            prevToDo.filter((item) => item.completed !== true)
+    )
+  };
 
   return (
     <ToDoContext.Provider
